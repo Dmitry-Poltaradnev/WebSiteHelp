@@ -1,0 +1,719 @@
+* {
+  /* Паддинги высчитываются внутри */
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1170px;
+
+  margin: 0 auto;
+  /* Для того чтобы не прилипал контент на маленьких экранах */
+  padding: 0 15px;
+}
+a {
+  /* Убираем подчёркивание ссылок */
+  text-decoration: none;
+  display: inline-block;
+}
+ul,
+li {
+  /* Убираем маркеры у ссылок */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "PT Serif", serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 400;
+  /* Размер шрифта */
+  font-size: 14px;
+  /* Высота строки */
+  line-height: 18px;
+  color: #5e5e5e;
+  /* letter spacing (расстояние между буквами ~10 = 0.1px) */
+}
+.header {
+  font-family: "Roboto", sans-serif;
+}
+.header_top {
+  background-color: #303030;
+}
+.header_btn {
+  float: right;
+  line-height: 36px;
+  font-family: "Roboto", sans-serif;
+  color: #1b1b1b;
+  background-color: #ffc222;
+  padding: 5px 20px 4px 50px;
+  font-size: 16px;
+  position: relative;
+}
+.header_btn:before {
+  content: "\f0b1";
+  font-family: "icomoon";
+  position: absolute;
+  left: 21px;
+  color: #1b1b1b;
+}
+.header_phone,
+.header_email {
+  letter-spacing: 0.25px;
+  color: #b6b5b6;
+  /* Выставляем высоту строки бэка */
+  line-height: 45px;
+  position: relative;
+}
+.header_phone {
+  padding-left: 20px;
+  padding-right: 30px;
+}
+.header_phone:before {
+  content: "\f095";
+  font-family: "icomoon";
+  /* Координат ведётся от края родительского элемента. */
+  position: absolute;
+  left: 0;
+  color: #ffc222;
+}
+.header_email {
+  padding-left: 24px;
+}
+/* before перед контентом выставляем элемент */
+.header_email:before {
+  content: "\f003";
+  font-family: "icomoon";
+  position: absolute;
+  left: 0;
+  color: #ffc222;
+}
+.header_contacts:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.header_content {
+  padding: 34px 0px 25px;
+}
+.menu li {
+  display: inline-block;
+}
+.header_content-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.menu a {
+  color: #494949;
+  font-size: 16px;
+  line-height: 36px;
+  /* transparent резервируем место под цвет
+  так как будет срабатывать бордер толко 
+  при наведении */
+  border: 1px solid transparent;
+  padding: 0px 16px;
+  transition: all 0.3s;
+}
+.menu a:hover {
+  border-color: #ffc222;
+}
+
+/* Блоки li между собой отступают по 10 
+но от первой не отстпает */
+.menu li + li {
+  padding-left: 10px;
+}
+
+.slider {
+  /* Добавляем бэк img */
+  background-image: url(../img/slide1.png);
+  /* отменяем дублирование изображения */
+  background-repeat: no-repeat;
+  /* чтобы растягивалось изображение */
+  background-size: cover;
+  background-position: center;
+  /* минимальная высота */
+  min-height: 500px;
+}
+.slider_item-content {
+  /* Текст слайдера посередине */
+  text-align: center;
+  padding-top: 120px;
+  /* Макс ширина блока */
+  max-width: 660px;
+  /* Центрируем блок */
+  margin: 0 auto;
+}
+.slider_title {
+  text-transform: uppercase;
+  line-height: 36px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: normal;
+  margin-bottom: 22px;
+  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+  color: #323232;
+}
+.slider_text {
+  line-height: 24px;
+  font-size: 18px;
+  color: #323232;
+  margin-bottom: 50px;
+}
+
+.default-btn {
+  /* Выстраивает border по размеру контунта внутри */
+  display: inline-block;
+  /* При указании высоты border оставшееся расстояние
+    от высоты строки делится на 2 */
+  padding: 8px 30px 8px 24px;
+  line-height: 24px;
+  color: #323232;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #ffc222;
+  /* Добавляем кнопке справа жёлтый блок для стрелки */
+  border-right-width: 20px;
+  position: relative;
+}
+.default-btn:after {
+  content: "\f105";
+  font-family: "icomoon";
+  position: absolute;
+  /* Прописываем положение стрелки внутри доп блока */
+  top: 50%;
+  transform: translateY(-50%);
+  right: -13px;
+}
+
+.slider_inner {
+  position: relative;
+}
+/* Выставляем кнопки слайдера по центру */
+.slick-btn {
+  position: absolute;
+  top: 70%;
+  z-index: 3;
+  /* Выставляем параметры для кнопок */
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  /* Делаем кнопки прозрачными */
+  background-color: transparent;
+  color: white;
+  /* Курсор рука */
+  cursor: pointer;
+  /* убираем обводки */
+  outline: none;
+  background-color: #ffc222;
+}
+.slick-btn:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "icomoon";
+}
+.slick-next:before {
+  content: "\f105";
+}
+.slick-prev:before {
+  content: "\f104";
+}
+.slick-next {
+  right: 0;
+}
+.slick-prev {
+  left: 0;
+}
+/* Секция "наши услуги" 
+=========================*/
+.services {
+  padding: 50px 0px 30px;
+}
+.services_top,
+.news_top {
+  /* Flex элементы автоматически выравниваются и 
+  по высоте становятся равными друг другу */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.services_title-box,
+.form_title-box,
+.news_title-box {
+  /* указываем максимальгую ширину блока текста с полоской */
+  max-width: 520px;
+  /* Резервируем место для жёлтой полоски */
+  padding-left: 140px;
+  position: relative;
+}
+.services_title-box:before,
+.form_title-box:before,
+.news_title-box:before {
+  /* Если что-либо вешаешь на before необходимо прописывать 
+  content "" */
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: #ffc222;
+  /* выставляем линию относительно род объекта */
+  left: 0px;
+  top: 11px;
+}
+.services_title,
+.form_title,
+.news_title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #212020;
+  margin-bottom: 15px;
+}
+.services_text,
+.form_text,
+.news_text {
+  letter-spacing: 0.1px;
+}
+.services_btn a,
+.news_btn a {
+  font-family: "Roboto", sans-serif;
+  color: #373636;
+  letter-spacing: 0.25px;
+  line-height: 24px;
+  padding: 5px 38px;
+  border: 3px solid #e6e6e6;
+}
+.services_items {
+  display: flex;
+  justify-content: space-between;
+}
+.services_item {
+  /* Задаём ширину для квадратов в которых будут находиться 
+  item  */
+  max-width: 360px;
+  text-align: center;
+  padding: 30px 0px 80px;
+  position: relative;
+  min-height: 375px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
+}
+.services_item-title {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", sans-serif;
+  color: #212020;
+  padding: 20px 0px 30px;
+  font-weight: 500;
+}
+.services_item-text {
+  letter-spacing: 0.1px;
+  padding: 0px 35px 30px;
+}
+.services_item-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 0px;
+  right: 0px;
+}
+
+.services_item-btn .default-btn {
+  /* Меняем цвет текста в кнопке */
+  color: #373636;
+}
+.services_item-btn .default-btn:after {
+  /* Меняем цвет стрелки */
+  color: white;
+}
+.services_item-link {
+  color: #2a2a2a;
+  font-family: "Roboto", sans-serif;
+  /* Включаем подчёркивания  но не text decoration undrline
+  т.к ниже букв должно быть подчёркивание */
+  border-bottom: 1px solid #2a2a2a;
+  margin-right: 30px;
+}
+
+/* Секция о компании 
+=========================*/
+.about {
+  background-image: url(/img/about_back.png);
+  min-height: 300px;
+  /* Масштабирует фоновое изображение, согласно заданным размерам. */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 0px 45px;
+}
+.about_title {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  margin-bottom: 35px;
+}
+.about_text {
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: white;
+  margin-bottom: 35px;
+}
+.about-inner {
+  /* Выставляем макс ширину для блока текста и кнопки */
+  max-width: 545px;
+}
+.about_btn {
+  color: white;
+}
+/* Секция получить консультацию 
+================================*/
+.form {
+  padding-top: 30px;
+}
+
+.form-inner {
+  /* Прописываем настройки для img девушки */
+  padding-bottom: 40px;
+  background-image: url(/img/girl.png);
+  min-height: 460px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+.form_box {
+  /* Прописываем настройки для form таблицы */
+  max-width: 850px;
+  padding-top: 45px;
+}
+.form_box-inner {
+  /* Прописываем настройки для form таблицы */
+  display: flex;
+  justify-content: space-between;
+}
+.form_box-inner .jq-selectbox,
+.jqselect {
+  display: block;
+  width: 100%;
+}
+.form_box-inner .jq-selectbox__select {
+  border: 1px solid #e6e6e6;
+  height: 40px;
+  background: transparent;
+  border-radius: 0px;
+}
+.form_box-left {
+  max-width: 260px;
+  width: 100%;
+}
+.form_box-right {
+  max-width: 555px;
+  width: 100%;
+}
+.form_box-inner label,
+.form_box-inner input,
+.form_box-inner textarea {
+  /* Блок ведёт себя как блочный также для всего блока макс допустимую
+  ширину */
+  display: block;
+  width: 100%;
+}
+
+.form_box-inner label {
+  font-family: "Roboto", sans-serif;
+  line-height: 36px;
+  color: #282828;
+}
+.form_box-inner input {
+  margin-bottom: 8px;
+  /* Обводка при выборе поля */
+  outline: none;
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  /* для поля input делаем отступ чтобы символы при вводе не прилепали
+  к border */
+  padding: 0px 10px;
+}
+
+.form_box-inner select {
+  outline: none;
+  padding-left: 17px;
+}
+.form_box-inner textarea {
+  outline: none;
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  height: 207px;
+  /* Для того чтобы запретить менять размер textarea */
+  resize: none;
+  margin-bottom: 43px;
+}
+.form_box-inner button {
+  /* Убираем цвет у бэка кнопки + меняем цвет шрифта */
+  background-color: transparent;
+  color: #282828;
+  float: right;
+}
+/* Секция приемущества
+========================= */
+.advantages {
+  padding: 55px 0px 40px;
+  background-image: url(/img/offers.png);
+  min-height: 285px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.advantages_inner {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.advantages_title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  padding: 60px 0px 20px;
+  position: relative;
+}
+.advantages_text {
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.advantages_item {
+  /* макс ширина блока с текстом */
+  max-width: 360px;
+  padding: 0px 20px;
+}
+.advantages_title:before {
+  /* Стилизуем квадрат сверху */
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffc222;
+  /* Позиционируем его вверх 0 и по центру */
+  top: 0;
+  left: 50%;
+  /* Cдвигаем на 50% сам квадрат тоесть его transform на 
+  половину его ширины */
+  transform: translateX(-50%);
+}
+.advantages_title:after {
+  /* Устанавливаем галочку check */
+  content: "\f00c";
+  font-family: "icomoon";
+  font-size: 14px;
+  position: absolute;
+  /* от верхней точки блока*/
+  top: 10px;
+  left: 50%;
+  /* Cдвигаем на 50% сам квадрат тоесть его transform на 
+  половину его ширины */
+  transform: translateX(-50%);
+}
+/* Секция новости
+========================= */
+.news {
+  padding: 60px 0 110px;
+  background-color: #f9f9f9;
+}
+
+.news_inner {
+  /*  Контента ниже шапки блока */
+  display: flex;
+  justify-content: space-between;
+}
+.news_slider {
+  /* Блок слайдера */
+  max-width: 555px;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15.36px 0.64px rgba(128, 127, 127, 0.13);
+  padding: 60px 70px 35px 50px;
+  position: relative;
+}
+.news_slider:before {
+  /* Стилизуем кавычки сврху блока слайдера */
+  content: "\f10e";
+  font-family: "icomoon";
+  color: white;
+  background-color: #ffc222;
+  position: absolute;
+  height: 30px;
+  width: 65px;
+  font-size: 16px;
+  top: 0px;
+  left: 70px;
+  /* Чтобы кавычки стали по центру */
+  text-align: center;
+  line-height: 30px;
+}
+.news_blog {
+  max-width: 260px;
+  width: 100%;
+}
+.news_images {
+  position: relative;
+}
+
+.news_date {
+  /* Задаём дате цвет бэку и расположение */
+  position: absolute;
+  top: 0;
+  background-color: #ffc222;
+  height: 55px;
+  width: 50px;
+  color: white;
+  text-align: center;
+  /* Изменяем местоположения цифр */
+  padding-top: 30px;
+  font-weight: 700;
+  /* изменем место положения бэка жёлтого */
+  top: 0px;
+  left: 11px;
+}
+.news_blog-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #242424;
+  padding: 12px 0px;
+  letter-spacing: 0.5px;
+}
+.news_blog-text {
+  letter-spacing: 0.1px;
+  color: #242424;
+}
+.news_slider-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #242424;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+.news_slider-text {
+  letter-spacing: 0.1px;
+  margin-bottom: 30px;
+}
+.news_slider-author {
+  color: #212020;
+  letter-spacing: 0.1px;
+  font-family: "Roboto", sans-serif;
+}
+.news_slider-inner .slick-btn {
+  /* обращаемся к кнопкам через js */
+  top: auto;
+  bottom: -110px;
+}
+/* Прописываем позиции для кнопок левой и правой */
+.news_slider-inner .slick-next {
+  right: -70px;
+}
+.news_slider-inner .slick-prev {
+  right: 0px;
+  left: auto;
+}
+/* Footer
+================= */
+.footer_content {
+  background-color: #595959;
+  padding: 20px 0px 30px;
+}
+
+.footer_inner {
+  display: flex;
+  justify-content: space-between;
+}
+.footer_inner .header_btn {
+  float: none;
+  display: inline-block;
+}
+
+.footer_map {
+  padding-top: 10px;
+  max-width: 630px;
+  width: 100%;
+}
+
+.footer_map iframe {
+  width: 100%;
+}
+
+.footer_title {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+.footer_text {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 25px;
+}
+
+.footer_info {
+  max-width: 350px;
+}
+.footer_list a {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  letter-spacing: 0.25px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  padding-left: 33px;
+  position: relative;
+}
+
+.footer_list a:before {
+  /* Распологаем значки слава от навигации */
+  content: "";
+  position: absolute;
+  left: 0px;
+  color: #ffc222;
+  content: "\f003";
+  font-family: "icomoon";
+}
+.footer_list {
+  padding-top: 10px;
+}
+
+.footer_copy {
+  color: white;
+  text-align: center;
+  background-color: #303030;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  font-family: "Roboto", sans-serif;
+  padding: 8px 0px;
+}
+
+/* Такой записью добавляем приоритет для иконок в списке */
+.footer_list .footer_phone:before {
+  content: "\f095";
+  font-family: "icomoon";
+  left: 3px;
+}
+.footer_list .footer_adress:before {
+  content: "\f041";
+  font-family: "icomoon";
+  left: 3px;
+}
+.header_btn-menu {
+  display: none;
+  font-size: 28px;
+}
